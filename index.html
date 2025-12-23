@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Nuova - Rock Band</title>
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=MedievalSharp&family=Almendra+Display&family=EB+Garamond:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --rojo-sangre: #8b0000;
+      --rojo-brillante: #ff0000;
+      --oro-viejo: #c5a059;
+      --fondo-oscuro: #050505;
+      --pergamino: rgba(20, 20, 20, 0.95);
+    }
+
+    body {
+      margin: 0;
+      background: var(--fondo-oscuro);
+      color: #ddd;
+      font-family: 'EB Garamond', serif;
+    }
+
+    /* --- PORTADA --- */
+    header {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url('img/la-nuova-portada.png') no-repeat center top;
+      background-size: 30% ;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-bottom: 3px solid var(--rojo-sangre);
+    }
+
+    header h1 {
+      font-family: 'Metal Mania', cursive;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      color: var(--rojo-brillante);
+      text-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 4px 4px 0px #000;
+      margin: 0;
+    }
+
+    header p {
+      font-family: 'MedievalSharp', cursive;
+      font-size: 1.4em;
+      color: var(--oro-viejo);
+    }
+
+    /* --- SECCIÓN LEYENDA --- */
+    .seccion-leyenda {
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+    }
+
+    .historia-contenedor {
+      max-width: 900px;
+      padding: 40px;
+      border: 2px solid var(--oro-viejo);
+      background: var(--pergamino);
+      margin-bottom: 60px;
+      box-shadow: 0 0 50px rgba(0,0,0,0.9);
+      position: relative;
+    }
+
+    h2 {
+      font-family: 'Almendra Display', serif;
+      color: var(--rojo-sangre);
+      font-size: 3em;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .mapa-isolaria {
+      width: 100%;
+      max-width: 750px;
+      margin: 30px auto;
+      border: 6px double var(--oro-viejo);
+      padding: 4px;
+      background: #000;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    /* --- SECCIÓN INTEGRANTES (ESTILO RPG) --- */
+    .contenedor-integrantes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1100px;
+      margin-top: 40px;
+    }
+
+    .carta-personaje {
+      background: #111;
+      border: 1px solid #333;
+      padding: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .carta-personaje:hover {
+      border-color: var(--rojo-brillante);
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(255,0,0,0.2);
+    }
+
+    .foto-marco {
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
+      border: 2px solid var(--oro-viejo);
+      margin-bottom: 15px;
+    }
+
+    .foto-marco img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(0.5) contrast(1.1);
+      transition: 0.5s;
+    }
+
+    .carta-personaje:hover img {
+      filter: sepia(0) contrast(1.2);
+    }
+
+    .rol-titulo {
+      font-family: 'MedievalSharp', cursive;
+      color: var(--oro-viejo);
+      font-size: 0.9em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .nombre-personaje {
+      font-family: 'Metal Mania', cursive;
+      color: var(--rojo-brillante);
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    /* --- UTILIDADES --- */
+    .texto-leyenda::first-letter {
+      font-family: 'Metal Mania', cursive;
+      font-size: 4em;
+      float: left;
+      line-height: 1;
+      margin-right: 12px;
+      color: var(--rojo-brillante);
+    }
+
+    strong { color: var(--oro-viejo); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>LA NUOVA</h1>
+    <p>El Rugido del Metal, La Voz del BattleRock</p>
+  </header>
+
+  <section class="seccion-leyenda">
+    
+    <div class="historia-contenedor">
+      <h2>La Leyenda</h2>
+      <p class="texto-leyenda">
+        Hace muchos siglos, en la isla de <strong>Isolaria</strong>, bañada por el <strong>Mare Dei Draghi</strong>, existía una civilización de guerreros con armaduras
+        y armas forjadas con el metal que brotaba de las entrañas de una enorme montaña volcánica en Isolaria. Ese fuego ancestral templaba su acero y les otorgaba la
+        fuerza de los dragones.
+      </p>
+      
+      <img src="img/mapaisolaria.png" alt="Mapa de Isolaria" class="mapa-isolaria">
+      
+      <p>
+        Pero un día, de las profundidades de aquel volcán, despertaron criaturas olvidadas, guardianes de fuego y sombra que, liberados de su prisión, se alzaron con furia. 
+        Mas de entre las ruinas y el fuego surgió una sola sobreviviente: <strong>La Nuova</strong>, la guerrera destinada a vengar a su pueblo y a portar el legado del metal eterno.
+      </p>
+    </div>
+
+    <h2>La Orden del Metal</h2>
+    <div class="contenedor-integrantes">
+      
+      <div class="carta-personaje">
+        <div class="foto-marco">
+          <img src="img/RonaRock.png" alt="La Nuova">
+        </div>
+        <span class="rol-titulo">Vocalista</span>
+        <h3 class="nombre-personaje">Rona</h3>
+      </div>
+
+      <div class="carta-personaje">
+        <div class="foto-marco">
+          <img src="img/ElGuerrerodelRiff.png" alt="Guitarrista">
+        </div>
+        <span class="rol-titulo">Guitarra 1 </span>
+        <h3 class="nombre-personaje">El Guerrero del Riff</h3>
+      </div>
+
+     <div class="carta-personaje">
+        <div class="foto-marco">
+          <img src="img/ElEcodelaBatalla.png" alt="Guitarrista2">
+        </div>
+        <span class="rol-titulo">Guitarra 2</span>
+        <h3 class="nombre-personaje">El Eco de la Batalla</h3>
+      </div>
+
+      <div class="carta-personaje">
+        <div class="foto-marco">
+          <img src="img/ElGuardiandelAbismo.png" alt="Bajista">
+        </div>
+        <span class="rol-titulo">Bajista</span>
+        <h3 class="nombre-personaje">Guardian del Abismo</h3>
+      </div>
+
+      <div class="carta-personaje">
+        <div class="foto-marco">
+          <img src="img/LatidodeGuerra.png" alt="Baterista">
+        </div>
+        <span class="rol-titulo">Baterista</span>
+        <h3 class="nombre-personaje">El Latido de La Guerra</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
