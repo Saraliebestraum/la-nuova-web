@@ -50,20 +50,21 @@
       color: var(--oro-viejo);
     }
 
-    /* --- SECCIÓN LEYENDA --- */
+    /* --- SECCIÓN LEYENDA (La mantengo, pero sin el pergamino) --- */
     .seccion-leyenda {
       padding: 60px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+      /* Eliminé el background radial para que el fondo oscuro del body sea visible */
+      background: var(--fondo-oscuro); 
     }
 
     .historia-contenedor {
       max-width: 900px;
       padding: 40px;
       border: 2px solid var(--oro-viejo);
-      background: var(--pergamino);
+      background: var(--pergamino); /* Esto sigue dando un fondo oscuro al texto de la leyenda */
       margin-bottom: 60px;
       box-shadow: 0 0 50px rgba(0,0,0,0.9);
       position: relative;
@@ -75,6 +76,7 @@
       font-size: 3em;
       text-align: center;
       margin-top: 40px;
+      margin-bottom: 30px; /* Añadí un poco de margen inferior */
     }
 
     .mapa-isolaria {
@@ -87,37 +89,75 @@
       display: block;
       transition: transform 0.4s ease;
     }
+    
+    /* --- PERGAMINO PARA "LA ORDEN DEL METAL" --- */
+    .pergamino-orden {
+      max-width: 1000px;
+      margin: 0 auto 100px; /* Ajuste para el margen inferior */
+      position: relative;
+      padding: 60px 80px;
+      background-color: #e3d3b6; /* Color de pergamino */
+      background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+      border-radius: 5px;
+      box-shadow: 0 0 50px rgba(0,0,0,0.8);
+      color: #333; /* Color de texto para el pergamino */
+    }
 
-    /* --- SECCIÓN INTEGRANTES (ESTILO RPG) --- */
+    .pergamino-orden::before, .pergamino-orden::after {
+      content: "";
+      position: absolute;
+      left: -20px;
+      right: -20px;
+      height: 50px;
+      background: #c2a67a; /* Color de los bordes enrollados */
+      border: 4px solid #5d4037; /* Borde oscuro */
+      border-radius: 50px / 20px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .pergamino-orden::before { top: -25px; }
+    .pergamino-orden::after { bottom: -25px; }
+
+    .pergamino-orden h2 { /* Estilo para el h2 dentro del pergamino */
+      color: #5d1414; /* Rojo oscuro para el título */
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 40px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding-bottom: 15px;
+    }
+
+    /* --- SECCIÓN INTEGRANTES (Dentro del pergamino) --- */
     .contenedor-integrantes {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusté el minmax para que quepan más */
+      gap: 20px; /* Reduje el gap */
       width: 100%;
-      max-width: 1100px;
-      margin-top: 40px;
+      max-width: 900px; /* Ajusté el max-width para que se vea bien en el pergamino */
+      margin: 0 auto; /* Centrar dentro del pergamino */
     }
 
     .carta-personaje {
-      background: #111;
-      border: 1px solid #333;
+      background: rgba(255, 255, 255, 0.1); /* Fondo más claro para las cartas dentro del pergamino */
+      border: 1px solid #777; /* Borde más suave */
       padding: 15px;
       text-align: center;
       transition: all 0.3s ease;
       position: relative;
+      color: #333; /* Texto oscuro para las cartas */
     }
 
     .carta-personaje:hover {
       border-color: var(--rojo-brillante);
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(255,0,0,0.2);
+      transform: translateY(-5px); /* Menos desplazamiento al hover */
+      box-shadow: 0 5px 15px rgba(255,0,0,0.2);
     }
 
     .foto-marco {
       width: 100%;
-      height: 350px;
+      height: 250px; /* Ajusté la altura para que las cartas sean más compactas */
       overflow: hidden;
-      border: 2px solid var(--oro-viejo);
+      border: 2px solid #5d4037; /* Borde oscuro para el marco */
       margin-bottom: 15px;
     }
 
@@ -125,18 +165,18 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: sepia(0.5) contrast(1.1);
+      filter: sepia(0.6) contrast(1.2); /* Más sepia para integrar con el pergamino */
       transition: 0.5s;
     }
 
     .carta-personaje:hover img {
-      filter: sepia(0) contrast(1.2);
+      filter: sepia(0.2) contrast(1.3); /* Menos sepia al hover */
     }
 
     .rol-titulo {
       font-family: 'MedievalSharp', cursive;
-      color: var(--oro-viejo);
-      font-size: 0.9em;
+      color: #5d4037; /* Tono más oscuro */
+      font-size: 0.8em;
       text-transform: uppercase;
       margin-bottom: 5px;
       display: block;
@@ -144,8 +184,8 @@
 
     .nombre-personaje {
       font-family: 'Metal Mania', cursive;
-      color: var(--rojo-brillante);
-      font-size: 1.8em;
+      color: var(--rojo-sangre); /* Rojo sangre para el nombre */
+      font-size: 1.5em; /* Un poco más pequeño */
       margin: 0;
     }
 
@@ -160,6 +200,83 @@
     }
 
     strong { color: var(--oro-viejo); }
+
+    /* --- NUEVA SECCIÓN: PRESENTACIONES REALIZADAS --- */
+    .seccion-presentaciones {
+        padding: 80px 20px; /* Más padding para separarla */
+        text-align: center;
+        background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); /* Fondo con gradiente */
+        border-top: 3px solid var(--rojo-sangre); /* Un borde para separarlo visualmente */
+        color: #ddd;
+    }
+
+    .seccion-presentaciones h2 {
+        font-family: 'Metal Mania', cursive;
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        color: var(--rojo-brillante);
+        text-shadow: 0 0 15px rgba(255, 0, 0, 0.5), 2px 2px 0px #000;
+        margin-bottom: 60px;
+    }
+
+    .grid-presentaciones {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .card-presentacion {
+        background: #111;
+        border: 2px solid var(--oro-viejo);
+        padding: 25px;
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 20px rgba(0,0,0,0.7);
+        position: relative;
+    }
+
+    .card-presentacion:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+    }
+
+    .card-presentacion img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border: 1px solid #555;
+        margin-bottom: 15px;
+        filter: grayscale(0.8) contrast(1.1); /* Estilo de imagen más oscuro/antiguo */
+        transition: filter 0.3s ease;
+    }
+
+    .card-presentacion:hover img {
+        filter: grayscale(0) contrast(1.2); /* Color al pasar el ratón */
+    }
+
+    .card-presentacion h3 {
+        font-family: 'MedievalSharp', cursive;
+        font-size: 1.8em;
+        color: var(--oro-viejo);
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .card-presentacion p {
+        font-family: 'EB Garamond', serif;
+        font-size: 1.1em;
+        color: #bbb;
+        margin-bottom: 5px;
+    }
+
+    .card-presentacion .fecha-lugar {
+        font-weight: bold;
+        color: var(--rojo-brillante);
+        font-family: 'Metal Mania', cursive;
+        font-size: 1.2em;
+    }
+
   </style>
 </head>
 <body>
@@ -186,8 +303,11 @@
         Mas de entre las ruinas y el fuego surgió una sola sobreviviente: <strong>La Nuova</strong>, la guerrera destinada a vengar a su pueblo y a portar el legado del metal eterno.
       </p>
     </div>
+  </section>
 
+  <main class="pergamino-orden">
     <h2>La Orden del Metal</h2>
+    
     <div class="contenedor-integrantes">
       
       <div class="carta-personaje">
@@ -206,7 +326,7 @@
         <h3 class="nombre-personaje">El Guerrero del Riff</h3>
       </div>
 
-     <div class="carta-personaje">
+      <div class="carta-personaje">
         <div class="foto-marco">
           <img src="ElEcodelaBatalla.png" alt="Guitarrista2">
         </div>
@@ -231,9 +351,58 @@
       </div>
 
     </div>
+  </main>
 
+  <section class="seccion-presentaciones">
+    <h2>Presentaciones Realizadas</h2>
+    <div class="grid-presentaciones">
+      
+      <div class="card-presentacion">
+        <img src="MetalWarriors.png" alt="Metal Warriors">
+        <h3>Metal Warriors</h3>
+        <p>Una noche épica con los mejores himnos del metal.</p>
+        <p class="fecha-lugar">5 de septiembre, 2023 - BurguerBar</p>
+      </div>
+
+      <div class="card-presentacion">
+        <img src="Power Ballads.png" alt="Power Ballads BurguerBar">
+        <h3>Power Ballads</h3>
+        <p>Evento dedicado a las baladas Rock que marcaron toda una epoca.</p>
+        <p class="fecha-lugar">13 de Junio, 2023 - BurgueBar</p>
+      </div>
+      
+      <div class="card-presentacion">
+        <img src="LegendsofLove.png" alt="Legends of Love">
+        <h3>Legends Of Love</h3>
+        <p> Noche romantica junto a nuestros temas favoritos de Rock.</p>
+        <p class="fecha-lugar"> 22 de marzo, 2025 - GarageRockBar</p>
+      </div>
+
+      <div class="card-presentacion">
+        <img src="HardRockRevivalBirosca.png" alt="Hard Rock Revival birosca">
+        <h3>Hard Rock Revival</h3>
+        <p>El público fue nuestro ejército en esta presentación inolvidable.</p>
+        <p class="fecha-lugar">13 de septiembre, 2024 - BiroscaCarioca</p>
+      </div>
+
+      
+      <div class="card-presentacion">
+        <img src="HardRockRevival.png" alt="Hard Rock Revival">
+        <h3>Hard Rock Revival</h3>
+        <p>El público fue nuestro ejército en esta presentación inolvidable.</p>
+        <p class="fecha-lugar">20 de Julio, 2024 - GarageRockBar</p>
+      </div>
+     
+     
+
+      <div class="card-presentacion">
+        <img src="enter La Nuova.png" alt="Enter La Nuova">
+        <h3>Hard Rock Revival</h3>
+        <p> El despegue de nuestro sonido Battlerock.</p>
+        <p class="fecha-lugar">13 de Abril, 2024 - BurguerBar</p>
+      </div>
+    </div>
   </section>
 
 </body>
-
 </html>
